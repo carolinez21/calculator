@@ -1,0 +1,30 @@
+body{
+    font-size: 50px;
+}
+
+.container, .result {
+    border: .5px solid black;
+}
+
+.container{
+    width: 400px;
+    padding: 40px;
+}
+
+.result{
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+button{
+    font-size: 50px;
+    padding: 20px; 
+    width: 90px;
+}
+
+.row1, .row2, .row3, .row4{
+    display: flex;
+    margin: 10px 0px;
+    justify-content: space-between;
+}
