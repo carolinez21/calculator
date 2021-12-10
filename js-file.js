@@ -26,9 +26,16 @@ let second;
 let operator ="";
 let clear = false;
 
+function getDec(number){
+    if(Math.floor(number) !== number){
+        return String(number).split(".")[1].length || 0;
+    }
+    return 0;
+}
+
 function round(number){
     let numDig = String(number).length;
-    let numDec = String(number).split(".")[1].length || 0;
+    let numDec = getDec(number);
     if(numDig > 15){
         let difference = numDig - 15;
         let roundDec = numDec - difference;
