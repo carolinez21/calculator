@@ -44,6 +44,13 @@ function round(number){
     return number;
 }
 
+function checkDivideZero(operator, first, second){
+    if(operator == "÷" && first == "0" && second == "0"){
+        return true;
+    }
+    return false;
+}
+
 function display(){
     const buttons = document.querySelectorAll("button");
     const result = document.querySelector(".result");
@@ -51,17 +58,35 @@ function display(){
         button.addEventListener('click', ()=>{
             if(button.id == "÷" || button.id == "x" || button.id =="-" ||button.id=="+"){
                 if(operator !== ""){
-                    let solution = operate(operator, first, result.textContent);
-                    let roundedSol = round(solution);
-                    result.textContent = roundedSol;
+                    if(checkDivideZero(operator, first, result.textContent)) {
+                        result.textContent = "haha nice try";
+                        clear = false;
+                    }else{
+                        let solution = operate(operator, first, result.textContent);
+                        if (isNaN(solution)){
+                            result.textContent = "NaN";
+                        }else{
+                            result.textContent = round(solution);
+                        }
+                        clear = true;
+                    }
+                }else{
+                    clear = true;
                 }
                 first = result.textContent;
                 operator = button.id;
-                clear = true;
             }else if(button.id =="="){
                 second = result.textContent;
-                let solution = operate(operator, first, second);
-                result.textContent = round(solution);
+                if(checkDivideZero(operator, first, second)) {
+                    result.textContent = "haha nice try";
+                }else{
+                    let solution = operate(operator, first, second);
+                    if (isNaN(solution)){
+                        result.textContent = "NaN";
+                    }else{
+                        result.textContent = round(solution);
+                    }
+                }
                 first = result.textContent;
                 operator = "";
                 clear = false;
