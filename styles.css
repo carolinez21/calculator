@@ -1,5 +1,12 @@
 body{
-    font-size: 50px;
+    font-size: 80px;
+}
+
+.calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .container, .result {
@@ -7,24 +14,34 @@ body{
 }
 
 .container{
-    width: 400px;
-    padding: 40px;
+    width: 360px;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+.result, .button{
+    border-radius: 10px;
 }
 
 .result{
     text-align: right;
     padding: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 button{
-    font-size: 50px;
-    padding: 20px; 
-    width: 90px;
+    font-size: 30px;
+    width: 85px;
+    height: 85px;
+    text-align: center;
 }
 
-.row1, .row2, .row3, .row4{
+#zero{
+    width: 180px;
+}
+
+.row1, .row2, .row3, .row4, .row5{
     display: flex;
     margin: 10px 0px;
-    justify-content: space-between;
+    gap: 10px;
 }

@@ -97,13 +97,13 @@ function display(){
                 clear = false;
                 operator = "";
             }else if(result.textContent =="0"){
-                result.textContent = button.id;
+                result.textContent = button.textContent;
             }else{
                 if(clear == true){
-                    result.textContent = button.id;
+                    result.textContent = button.textContent;
                     clear = false;
                 }else{
-                    result.textContent += button.id;
+                    result.textContent += button.textContent;
                 }
             }
         })
