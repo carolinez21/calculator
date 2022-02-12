@@ -7,3 +7,5 @@ What I learned:
 - how to get the number of digits in a number
 - how to round a number to n decimal points
 - how to check if a variable is NaN
+- how to change the hover color of a button
+- how to make rounded corners
