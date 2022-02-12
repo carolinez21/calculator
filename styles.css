@@ -9,17 +9,18 @@ body{
     margin-top: 50px;
 }
 
-.container, .result {
-    border: .5px solid black;
+.result {
+    border: 2px solid white;
 }
 
 .container{
     width: 360px;
     padding: 30px;
     border-radius: 25px;
+    background-color: #9B6A6C
 }
 
-.result, .button{
+.result, button{
     border-radius: 10px;
 }
 
@@ -27,6 +28,7 @@ body{
     text-align: right;
     padding: 10px;
     margin-bottom: 50px;
+    background-color: #b09398;
 }
 
 button{
@@ -34,10 +36,31 @@ button{
     width: 85px;
     height: 85px;
     text-align: center;
+    background-color: #ebfcfb;
+}
+
+button:hover{
+    background-color: #dfebe7;
 }
 
 #zero{
     width: 180px;
+}
+
+.other{
+    background-color: white;
+}
+
+.other:hover{
+    background-color: #f6fffe;
+}
+
+.operation{
+    background-color: #cedfd9;
+}
+
+.operation:hover{
+    background-color: #b3c4be;
 }
 
 .row1, .row2, .row3, .row4, .row5{

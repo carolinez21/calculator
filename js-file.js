@@ -56,7 +56,7 @@ function display(){
     const result = document.querySelector(".result");
     buttons.forEach(button => {
         button.addEventListener('click', ()=>{
-            if(button.id == "÷" || button.id == "x" || button.id =="-" ||button.id=="+"){
+            if(button.textContent == "÷" || button.textContent == "x" || button.textContent =="-" ||button.textContent=="+"){
                 if(operator !== ""){
                     if(checkDivideZero(operator, first, result.textContent)) {
                         result.textContent = "haha nice try";
@@ -74,8 +74,8 @@ function display(){
                     clear = true;
                 }
                 first = result.textContent;
-                operator = button.id;
-            }else if(button.id =="="){
+                operator = button.textContent;
+            }else if(button.textContent =="="){
                 second = result.textContent;
                 if(checkDivideZero(operator, first, second)) {
                     result.textContent = "haha nice try";
@@ -90,7 +90,7 @@ function display(){
                 first = result.textContent;
                 operator = "";
                 clear = false;
-            }else if(button.id =="C"){
+            }else if(button.textContent =="C"){
                 result.textContent = "0";
                 first = "0";
                 second = "0";
