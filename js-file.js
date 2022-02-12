@@ -14,17 +14,24 @@ function divide(a,b){
     return a/b;
 }
 
+function modulo(a,b){
+    return a%b;
+}
+
 function operate(operator, a, b){
     if(operator === "+") return add(a,b);
     else if (operator === "-") return subtract(a,b);
     else if (operator === "x") return multiply(a,b);
     else if (operator === "÷") return divide(a,b);
+    else if (operator == "%") return modulo(a,b);
 }
 
 let first;
 let second;
 let operator ="";
 let clear = false;
+let sign = "+";
+let decimal = false;
 
 function getDec(number){
     if(Math.floor(number) !== number){
@@ -36,16 +43,16 @@ function getDec(number){
 function round(number){
     let numDig = String(number).length;
     let numDec = getDec(number);
-    if(numDig > 15){
-        let difference = numDig - 15;
+    if(numDig > 10){
+        let difference = numDig - 10;
         let roundDec = numDec - difference;
         return number.toFixed(roundDec);
     }
     return number;
 }
 
-function checkDivideZero(operator, first, second){
-    if(operator == "÷" && first == "0" && second == "0"){
+function checkDivideZero(operator, second){
+    if(operator == "÷" && second == "0"){
         return true;
     }
     return false;
@@ -56,9 +63,9 @@ function display(){
     const result = document.querySelector(".result");
     buttons.forEach(button => {
         button.addEventListener('click', ()=>{
-            if(button.textContent == "÷" || button.textContent == "x" || button.textContent =="-" ||button.textContent=="+"){
+            if(button.className == "operation" && button.textContent != "=" || button.textContent == "%"){
                 if(operator !== ""){
-                    if(checkDivideZero(operator, first, result.textContent)) {
+                    if(checkDivideZero(operator, result.textContent)) {
                         result.textContent = "haha nice try";
                         clear = false;
                     }else{
@@ -77,7 +84,7 @@ function display(){
                 operator = button.textContent;
             }else if(button.textContent =="="){
                 second = result.textContent;
-                if(checkDivideZero(operator, first, second)) {
+                if(checkDivideZero(operator, second)) {
                     result.textContent = "haha nice try";
                 }else{
                     let solution = operate(operator, first, second);
@@ -96,6 +103,14 @@ function display(){
                 second = "0";
                 clear = false;
                 operator = "";
+            }else if(button.textContent =="+/-"){
+                if (sign == "+") {
+                    result.textContent = "-" + result.textContent;
+                    sign = "-";
+                }else {
+                    result.textContent = result.textContent.substring(1);
+                    sign = "+";
+                }
             }else if(result.textContent =="0"){
                 result.textContent = button.textContent;
             }else{
@@ -103,7 +118,14 @@ function display(){
                     result.textContent = button.textContent;
                     clear = false;
                 }else{
-                    result.textContent += button.textContent;
+                    if (result.textContent.length <= 9) {
+                        if(button.textContent =="." && decimal == false){
+                            result.textContent += button.textContent;
+                            decimal = true;
+                        }else if(button.textContent != "."){
+                            result.textContent += button.textContent;
+                        }
+                    }
                 }
             }
         })
